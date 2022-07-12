@@ -1,8 +1,8 @@
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import {keyframes} from '@emotion/react'
+import styled from '@emotion/styled'
+import {Box} from '@mui/material'
 
-import theme from '../../styles/theme/theme';
+import theme from '../../styles/theme/theme'
 
 import type {SxProps, Theme} from '@mui/material'
 

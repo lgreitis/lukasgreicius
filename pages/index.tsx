@@ -1,14 +1,18 @@
-import { Grid, IconButton, Typography } from '@mui/material';
-import { IconBrandGithub, IconBrandLinkedin, IconBrandSpotify } from '@tabler/icons';
+import {Grid, IconButton, Typography} from '@mui/material'
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandSpotify,
+} from '@tabler/icons'
 
-import SpotifyCard from '../src/components/spotifyCard';
+// import SpotifyCard from '../src/components/spotifyCard'
 
 import type {NextPage} from 'next'
 
 const Home: NextPage = () => {
   return (
     <>
-      <SpotifyCard />
+      {/* <SpotifyCard /> */}
       <Grid
         container
         direction='column'
