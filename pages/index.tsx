@@ -27,13 +27,13 @@ const Home: NextPage = () => {
           Full Stack TypeScript developer
         </Typography>
         <Grid item sx={{pt: 2}}>
-          <IconButton>
+          <IconButton href='https://www.linkedin.com/in/lukas-grei%C4%8Dius-609955217/'>
             <IconBrandLinkedin size='32' />
           </IconButton>
-          <IconButton>
+          <IconButton href='https://github.com/lgreitis/'>
             <IconBrandGithub size='32' />
           </IconButton>
-          <IconButton>
+          <IconButton href='https://open.spotify.com/playlist/51IERYOUUwMAimdgaRE2Si?si=274b38785a7b4a62'>
             <IconBrandSpotify size='32' />
           </IconButton>
         </Grid>
