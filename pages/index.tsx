@@ -1,4 +1,4 @@
-import {Grid, IconButton, Typography} from '@mui/material'
+import {css, Grid, IconButton, Typography} from '@mui/material'
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -6,16 +6,19 @@ import {
 } from '@tabler/icons'
 
 import type {NextPage} from 'next'
+import GridBackground from '../src/components/GridBackground'
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Grid
-        container
-        direction='column'
-        justifyContent='center'
-        alignItems='center'
-        sx={{minHeight: '100vh'}}
+    <GridBackground>
+      <div
+        css={css`
+          z-index: 2;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        `}
       >
         <Typography variant='h1' align='center'>
           Lukas Greičius
@@ -40,8 +43,8 @@ const Home: NextPage = () => {
             <IconBrandSpotify size='32' />
           </IconButton>
         </Grid>
-      </Grid>
-    </>
+      </div>
+    </GridBackground>
   )
 }
 
