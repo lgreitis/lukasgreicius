@@ -6,6 +6,7 @@ import {
 } from '@tabler/icons'
 
 import type {NextPage} from 'next'
+
 import GridBackground from '../src/components/GridBackground'
 
 const Home: NextPage = () => {

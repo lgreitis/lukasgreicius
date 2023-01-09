@@ -13,6 +13,7 @@
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.6.4",
+    "@shopify/react-web-worker": "^5.0.6",
     "@tabler/icons": "^1.68.0",
     "next": "12.1.6",
     "react": "17.0.2",

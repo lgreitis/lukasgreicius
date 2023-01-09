@@ -1,51 +1,30 @@
-import {css, keyframes} from '@emotion/react'
-import React, {useEffect, useState} from 'react'
-
-const gradientAnim = keyframes`
-  from {
-    background-position: 0% center;
-  }
-
-  to {
-    background-position: -200% center;
-  }
-`
-
-const tile = css`
-  position: relative;
-  ::before {
-    background-color: #000;
-    content: '';
-    position: absolute;
-    inset: 0.5px;
-  }
-`
+import {css} from '@emotion/react'
+import {IconX} from '@tabler/icons'
+import {useEffect} from 'react'
+import useAutomata from './useAutomata'
 
 interface Props {
   children?: JSX.Element | JSX.Element[]
 }
 
 const GridBackground = (props: Props) => {
-  const [data, setData] = useState<{columns: number; rows: number}>({
-    columns: 0,
-    rows: 0,
-  })
-
-  const updateGridData = () => {
-    const columns = Math.floor(document.body.clientWidth / 50)
-    const rows = Math.floor(document.body.clientHeight / 50)
-
-    setData({columns, rows})
-  }
+  const {state, rows, columns, updateGridData, remakeGrid} = useAutomata()
 
   useEffect(() => {
-    updateGridData()
-    window.addEventListener('resize', updateGridData)
+    const interval = setInterval(updateGridData, 600)
 
     return () => {
-      window.removeEventListener('resize', updateGridData)
+      clearInterval(interval)
     }
-  }, [])
+  }, [updateGridData])
+
+  useEffect(() => {
+    window.addEventListener('resize', remakeGrid)
+
+    return () => {
+      window.removeEventListener('resize', remakeGrid)
+    }
+  }, [remakeGrid])
 
   return (
     <div
@@ -54,33 +33,53 @@ const GridBackground = (props: Props) => {
         align-items: center;
         justify-content: center;
         height: 100vh;
-
-        animation: ${gradientAnim} 10s linear infinite;
-
-        background: linear-gradient(to right, #5f2c82, #49a09d, #5f2c82);
-        background-size: 200%;
       `}
     >
-      <div
-        css={css`
-          position: absolute;
-          height: 100vh;
-          width: 100vw;
-          padding-bottom: 1px;
-          padding-right: 1px;
+      {state && (
+        <div
+          css={css`
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
 
-          display: grid;
-          grid-template-columns: repeat(${data?.columns}, 1fr);
-          grid-template-rows: repeat(${data?.rows}, 1fr);
-        `}
-      >
-        {[...Array(data.columns * data.rows)].map((el, i) => {
-          return <div key={i} css={tile} />
-        })}
-      </div>
+            display: grid;
+            grid-template-columns: repeat(${columns}, 1fr);
+            grid-template-rows: repeat(${rows}, 1fr);
+          `}
+        >
+          {state.map((_, i) => {
+            return state[i].map((el, x) => {
+              return (
+                <IconX
+                  key={`i${i}x${x}`}
+                  style={{
+                    color: '#e0ff0d',
+                    transition: `opacity 250ms ease-in-out, transform 250ms ease-in-out`,
+                    opacity: el / 119 >= 0.98 ? 1 : 0,
+                    transform:
+                      el / 119 >= 0.98 ? 'rotate(180deg)' : 'rotate(0deg)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                />
+              )
+            })
+          })}
+        </div>
+      )}
       {props.children}
     </div>
   )
 }
 
 export default GridBackground
+
+{
+  /* <IconX
+css={css`
+  color: #e0ff0d;
+`}
+/> */
+}
