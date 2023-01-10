@@ -27,50 +27,62 @@ const GridBackground = (props: Props) => {
   }, [remakeGrid])
 
   return (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      `}
-    >
-      {state && (
-        <div
-          css={css`
-            position: absolute;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
+    <>
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        `}
+      >
+        {state && (
+          <div
+            css={css`
+              position: absolute;
+              height: 100vh;
+              width: 100vw;
+              overflow: hidden;
 
-            display: grid;
-            grid-template-columns: repeat(${columns}, 1fr);
-            grid-template-rows: repeat(${rows}, 1fr);
-          `}
-        >
-          {state.map((_, i) => {
-            return state[i].map((el, x) => {
-              return (
-                <IconX
-                  key={`i${i}x${x}`}
-                  style={{
-                    color: '#e0ff0d',
-                    transition: `opacity 250ms ease-in-out, transform 250ms ease-in-out`,
-                    opacity: el / 119 >= 0.98 ? 1 : 0,
-                    transform:
-                      el / 119 >= 0.98 ? 'rotate(180deg)' : 'rotate(0deg)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                />
-              )
-            })
-          })}
-        </div>
-      )}
-      {props.children}
-    </div>
+              display: grid;
+              grid-template-columns: repeat(${columns}, 1fr);
+              grid-template-rows: repeat(${rows}, 1fr);
+            `}
+          >
+            {state.map((_, i) => {
+              return state[i].map((el, x) => {
+                return (
+                  <div
+                    key={`i${i}x${x}`}
+                    className='icon'
+                    style={{
+                      opacity: el / 119 >= 0.98 ? 1 : 0,
+                      transform:
+                        el / 119 >= 0.98 ? 'rotate(180deg)' : 'rotate(0deg)',
+                    }}
+                  >
+                    <IconX style={{color: '#e0ff0d'}} />
+                  </div>
+                )
+              })
+            })}
+          </div>
+        )}
+        {props.children}
+      </div>
+      <style jsx>
+        {`
+          .icon {
+            color: '#e0ff0d';
+            transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            will-change: opacity, transform;
+          }
+        `}
+      </style>
+    </>
   )
 }
 
