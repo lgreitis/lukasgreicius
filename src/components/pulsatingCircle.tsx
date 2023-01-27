@@ -47,6 +47,7 @@ interface PulsatingCircleProps {
 const PulsatingCircle = ({sx = []}: PulsatingCircleProps) => {
   return (
     <Box
+      component='div'
       sx={[
         {
           display: 'inline-flex',
