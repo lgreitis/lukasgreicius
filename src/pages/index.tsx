@@ -11,10 +11,10 @@ const Home: NextPage = () => {
           Lukas Greičius
         </h1>
         <div className="flex gap-2">
-          <SocialButton href="#">
+          <SocialButton href="https://www.linkedin.com/in/lukas-grei%C4%8Dius-609955217/">
             <IconLinkedin className="h-8 w-8 fill-white" />
           </SocialButton>
-          <SocialButton href="#">
+          <SocialButton href="https://github.com/lgreitis/">
             <IconGithub className="h-8 w-8 bg-transparent stroke-white" />
           </SocialButton>
         </div>
