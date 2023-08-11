@@ -8,15 +8,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "^2.0.18",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@next/font": "^13.4.13",
+    "@next/mdx": "^13.4.13",
     "@t3-oss/env-nextjs": "^0.2.1",
     "clsx": "^2.0.0",
+    "framer-motion": "^10.15.1",
     "next": "^13.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.14.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "@types/eslint": "^8.44.2",
     "@types/node": "^20.4.9",
     "@types/prettier": "^3.0.0",
