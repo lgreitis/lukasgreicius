@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import { CardItem, TechIcons, workItems } from "~/modules/work/workItems";
 import { cn } from "~/utils/cn";
 
@@ -49,50 +49,53 @@ const Work = () => {
               the close animation starts to break. If this is fixed and the key is no longer needed the animation would be even better.  */}
         <AnimatePresence key={selectedItem?.id ?? "none"}>
           <Dialog
+            as="div"
             open={selectedItem !== null}
             onClose={() => setSelectedItem(null)}
-            className="inset pointer-events-none fixed inset-0 z-20 flex h-screen place-content-center place-items-center overflow-auto overflow-x-hidden"
+            className="relative z-20"
           >
-            {selectedItem && (
-              <motion.div
-                className="pointer-events-auto relative max-h-screen w-full rounded-3xl bg-white md:w-11/12 lg:w-9/12 xl:w-7/12"
-                layoutId={`card-container-${selectedItem.id}`}
-              >
-                <motion.img
-                  layoutId={`card-image-${selectedItem.id}`}
-                  className="w-full rounded-t-3xl object-cover"
-                  src={selectedItem.image}
-                />
-                <CardHeader
-                  card={selectedItem}
-                  className="rounded-b-3xl bg-white"
-                />
-                <CardTech card={selectedItem} />
-                <motion.button
-                  className="absolute right-5 top-5 rounded-full bg-black bg-opacity-40 p-1 text-white"
-                  onClick={() => setSelectedItem(null)}
-                >
-                  <XMarkIcon className="w-5" />
-                </motion.button>
-                <motion.div
-                  className={cn(
-                    "prose max-w-none rounded-b-3xl bg-white px-6",
-                    selectedItem.description && "pb-6",
-                  )}
-                >
-                  {selectedItem.description}
-                </motion.div>
-              </motion.div>
-            )}
+            {/* TODO: figure out why Transition doesnt work */}
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+
+            <div className="fixed inset-0 w-full overflow-y-auto overflow-x-hidden">
+              <div className="flex min-h-full items-center justify-center">
+                {selectedItem && (
+                  <Dialog.Panel
+                    as={motion.div}
+                    className="relative max-h-screen w-full rounded-3xl bg-white md:w-11/12 lg:w-9/12 xl:w-7/12"
+                    layoutId={`card-container-${selectedItem.id}`}
+                  >
+                    <motion.img
+                      layoutId={`card-image-${selectedItem.id}`}
+                      className="w-full rounded-t-3xl object-cover"
+                      src={selectedItem.image}
+                    />
+                    <CardHeader
+                      card={selectedItem}
+                      className="rounded-b-3xl bg-white"
+                    />
+                    <CardTech card={selectedItem} />
+                    <motion.button
+                      className="absolute right-5 top-5 rounded-full bg-black bg-opacity-40 p-1 text-white"
+                      onClick={() => setSelectedItem(null)}
+                    >
+                      <XMarkIcon className="w-5" />
+                    </motion.button>
+                    <motion.div
+                      className={cn(
+                        "prose max-w-none rounded-b-3xl bg-white px-6",
+                        selectedItem.description && "pb-6",
+                      )}
+                    >
+                      {selectedItem.description}
+                    </motion.div>
+                  </Dialog.Panel>
+                )}
+              </div>
+            </div>
           </Dialog>
         </AnimatePresence>
       </div>
-
-      <motion.div
-        className="pointer-events-none fixed bottom-0 left-0 right-0 top-0 z-10 overflow-hidden bg-neutral-950"
-        animate={{ opacity: selectedItem ? 0.6 : 0 }}
-        transition={{ duration: 0.4 }}
-      />
     </>
   );
 };
