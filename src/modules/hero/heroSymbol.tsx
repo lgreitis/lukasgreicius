@@ -3,6 +3,7 @@ import {
   Environment,
   GradientTexture,
   Lightformer,
+  PresentationControls,
   Text3D,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -11,73 +12,6 @@ import { useControls } from "leva";
 import { useRef } from "react";
 import * as THREE from "three";
 import { Group } from "three";
-
-const SymbolGroup = () => {
-  const symbolRef = useRef<Group>(null!);
-
-  useFrame((state, delta) => {
-    const t = state.clock.getElapsedTime();
-    symbolRef.current.rotation.y += delta / 2;
-    symbolRef.current.position.y = THREE.MathUtils.lerp(
-      symbolRef.current.position.y,
-      Math.sin(t) / 5,
-      0.1,
-    );
-  });
-
-  // TODO: simplify and optimize
-  return (
-    <Center ref={symbolRef}>
-      <Text3D
-        size={2}
-        height={0.5}
-        font="/fonts/Inter_Bold.json"
-        bevelEnabled
-        bevelThickness={0.1}
-        bevelSegments={16}
-        bevelSize={0.1}
-      >
-        {"<"}
-        <meshPhysicalMaterial roughness={0} metalness={0.9} reflectivity={2}>
-          {/* TODO: find nice colors */}
-          <GradientTexture colors={["#3172ff", "#fc3bc2"]} stops={[0, 1]} />
-        </meshPhysicalMaterial>
-      </Text3D>
-      <Text3D
-        size={2}
-        height={0.5}
-        font="/fonts/Inter_Bold.json"
-        position={[1.8, 0, 0]}
-        bevelEnabled
-        bevelThickness={0.1}
-        bevelSegments={16}
-        bevelSize={0.1}
-      >
-        {"/"}
-        <meshPhysicalMaterial roughness={0} metalness={0.9} reflectivity={2}>
-          {/* TODO: find nice colors */}
-          <GradientTexture colors={["#3172ff", "#fc3bc2"]} stops={[0, 1]} />
-        </meshPhysicalMaterial>
-      </Text3D>
-      <Text3D
-        size={2}
-        height={0.5}
-        font="/fonts/Inter_Bold.json"
-        position={[3, 0, 0]}
-        bevelEnabled
-        bevelThickness={0.1}
-        bevelSegments={16}
-        bevelSize={0.1}
-      >
-        {">"}
-        <meshPhysicalMaterial roughness={0} metalness={0.9} reflectivity={2}>
-          {/* TODO: find nice colors */}
-          <GradientTexture colors={["#3172ff", "#fc3bc2"]} stops={[0, 1]} />
-        </meshPhysicalMaterial>
-      </Text3D>
-    </Center>
-  );
-};
 
 const Symbol = () => {
   const symbolRef = useRef<Group>(null!);
@@ -173,14 +107,22 @@ const HeroSymbol = () => {
       <EffectComposer>
         <Bloom
           luminanceThreshold={luminanceThreshold}
-          // mipmapBlur
           luminanceSmoothing={luminanceSmoothing}
           intensity={bloomIntensity}
+          // mipmapBlur
         />
         {/* <ToneMapping middleGrey={middleGrey} maxLuminance={maxLuminance} /> */}
       </EffectComposer>
 
-      <Symbol />
+      <PresentationControls
+        config={{ mass: 2, tension: 500, friction: 50 }}
+        snap={{ mass: 1, tension: 200 }}
+        rotation={[0, 0.3, 0]}
+        polar={[-Math.PI / 3, Math.PI / 3]}
+        azimuth={[-Math.PI / 1.4, Math.PI / 2]}
+      >
+        <Symbol />
+      </PresentationControls>
     </Canvas>
   );
 };

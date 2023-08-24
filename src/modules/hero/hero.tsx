@@ -21,7 +21,7 @@ const Hero = () => {
             </SocialButton>
           </div>
         </div>
-        <div className="relative h-[400px] w-full grayscale  lg:mb-20 lg:h-[600px] lg:w-[600px]">
+        <div className="relative h-[400px] w-full grayscale lg:mb-20 lg:h-[600px] lg:w-[600px]">
           <div className="h-full before:absolute before:left-0 before:top-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-[#3172ff15] before:to-[#fc3bc215] before:blur-[100px] before:content-['']">
             <HeroSymbol />
           </div>
