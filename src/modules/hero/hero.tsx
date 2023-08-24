@@ -5,9 +5,9 @@ import HeroSymbol from "~/modules/hero/heroSymbol";
 
 const Hero = () => {
   return (
-    <div className="flex h-screen items-center justify-center bg-black">
-      <div className="flex h-full w-full max-w-7xl flex-col-reverse items-center justify-center text-center lg:flex-row lg:text-start">
-        <div className="flex w-full max-w-3xl flex-col gap-3 text-white">
+    <div className="flex items-center justify-center pb-64 lg:h-screen lg:pb-0">
+      <div className="flex h-full w-full max-w-7xl flex-col-reverse items-center justify-end text-center lg:flex-row lg:justify-center lg:text-start">
+        <div className="flex max-w-3xl flex-col gap-3 text-white lg:whitespace-nowrap">
           <h1 className="text-7xl">Lukas Greičius</h1>
           <h2 className="text-3xl text-neutral-600">
             Professional text file editor.
@@ -21,8 +21,8 @@ const Hero = () => {
             </SocialButton>
           </div>
         </div>
-        <div className="relative h-[200px] w-full lg:h-[600px] lg:w-[600px]">
-          <div className="h-full before:absolute before:left-0 before:top-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-[#3172ff09] before:to-[#fc3bc210] before:blur-[100px] before:content-['']">
+        <div className="relative h-[400px] w-full grayscale  lg:mb-20 lg:h-[600px] lg:w-[600px]">
+          <div className="h-full before:absolute before:left-0 before:top-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-[#3172ff15] before:to-[#fc3bc215] before:blur-[100px] before:content-['']">
             <HeroSymbol />
           </div>
         </div>

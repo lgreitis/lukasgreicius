@@ -6,7 +6,12 @@ import {
   Text3D,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import {
+  Bloom,
+  EffectComposer,
+  ToneMapping,
+} from "@react-three/postprocessing";
+import { useControls } from "leva";
 import { useRef } from "react";
 import * as THREE from "three";
 import { Group } from "three";
@@ -84,6 +89,7 @@ const Symbol = () => {
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
     symbolRef.current.rotation.y += delta / 2;
+    // symbolRef.current.rotation.z += delta / 2;
     symbolRef.current.position.y = THREE.MathUtils.lerp(
       symbolRef.current.position.y,
       Math.sin(t) / 5,
@@ -103,20 +109,14 @@ const Symbol = () => {
         bevelSize={0.1}
       >
         {"</>"}
-        <meshPhysicalMaterial
-          roughness={0}
-          metalness={0.9}
-          // clearcoat={0.6}
-          // clearcoatRoughness={0.2}
-          reflectivity={2}
-          // color={"#3172ff"}
-        >
-          {/* TODO: find nice colors */}
+        <meshPhysicalMaterial roughness={0} metalness={0.9} reflectivity={2}>
           <GradientTexture
-            colors={["#3172ff", "#fc3bc2"]}
-            // colors={["#57ccbc", "#891ee0"]}
+            // colors={["#3172ff", "#fc3bc2"]}
+            colors={["#08142e", "#5c1446"]}
+            // colors={["#0d214b", "#3b0c2d"]}
+            // colors={["#d737ff", "#f7f326"]}
+            // colors={["#26082e", "#053522"]}
             stops={[0, 1]}
-            // width={1024}
           />
         </meshPhysicalMaterial>
       </Text3D>
@@ -125,25 +125,23 @@ const Symbol = () => {
 };
 
 const HeroSymbol = () => {
-  const intensity = 1;
-  const luminanceSmoothing = 0.57;
-  const luminanceThreshold = 0.17;
+  const { bloomIntensity, luminanceSmoothing, luminanceThreshold } =
+    useControls({
+      bloomIntensity: { value: 1, min: 0, max: 2, step: 0.01 },
+      luminanceSmoothing: { value: 0.57, min: 0, max: 1, step: 0.01 },
+      luminanceThreshold: { value: 0.17, min: 0, max: 1 },
+    });
 
-  // const intensity = 0.85;
-  // const luminanceSmoothing = 0.51;
-  // const luminanceThreshold = 0.65;
+  const { middleGrey, maxLuminance } = useControls({
+    middleGrey: { value: 0.6, min: 0, max: 1, step: 0.1 },
+    maxLuminance: { value: 6, min: 0, max: 6, step: 0.5 },
+  });
 
-  // const { intensity, luminanceSmoothing, luminanceThreshold } = useControls({
-  //   intensity: { value: 1, min: 0, max: 2, step: 0.01 },
-  //   luminanceSmoothing: { value: 0.57, min: 0, max: 1, step: 0.01 },
-  //   luminanceThreshold: { value: 0.17, min: 0, max: 1 },
-  // });
-
-  const lighformerIntensity = 1;
+  const lighformerIntensity = 10;
 
   return (
-    <Canvas>
-      <Environment resolution={1024}>
+    <Canvas style={{ width: "100%", flex: "1 1 100%" }}>
+      <Environment resolution={2048}>
         <Lightformer
           intensity={lighformerIntensity}
           rotation-x={Math.PI / 2}
@@ -176,25 +174,28 @@ const HeroSymbol = () => {
         />
       </Environment>
 
-      {/* <Effects>
-<unreal
-      </Effects> */}
-
       <EffectComposer>
         <Bloom
           luminanceThreshold={luminanceThreshold}
-          mipmapBlur
+          // mipmapBlur
           luminanceSmoothing={luminanceSmoothing}
-          intensity={intensity}
+          intensity={bloomIntensity}
         />
+        <ToneMapping middleGrey={middleGrey} maxLuminance={maxLuminance} />
       </EffectComposer>
 
       <Symbol />
-      {/* <SymbolGroup /> */}
-      {/* <OrbitControls /> */}
-      {/* <Stats /> */}
     </Canvas>
   );
 };
 
 export default HeroSymbol;
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      unrealBloomPass: any;
+      outputPass: any;
+    }
+  }
+}

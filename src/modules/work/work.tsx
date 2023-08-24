@@ -21,14 +21,14 @@ const Work = () => {
   return (
     <>
       <div>
-        <h1 className="py-4 text-center text-5xl font-bold lg:py-7">
+        <h1 className="pb-6 pt-4 text-center text-5xl font-bold lg:pb-8 lg:pt-8">
           Stuff I have worked on
         </h1>
         <div className="flex min-h-screen justify-center px-6 pb-6">
           <div className="grid h-full max-w-screen-xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {workItems.map((item) => (
               <motion.div
-                className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 transition-colors hover:bg-neutral-900"
+                className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-black transition-colors hover:bg-neutral-900"
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
                 layoutId={`card-container-${item.id}`}
