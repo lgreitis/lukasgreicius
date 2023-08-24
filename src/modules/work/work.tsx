@@ -28,7 +28,7 @@ const Work = () => {
           <div className="grid h-full max-w-screen-xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {workItems.map((item) => (
               <motion.div
-                className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-200 transition-colors hover:bg-neutral-100"
+                className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 transition-colors hover:bg-neutral-900"
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
                 layoutId={`card-container-${item.id}`}
@@ -55,14 +55,14 @@ const Work = () => {
             className="relative z-20"
           >
             {/* TODO: figure out why Transition doesnt work */}
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-50" />
 
             <div className="fixed inset-0 w-full overflow-y-auto overflow-x-hidden">
               <div className="flex min-h-full items-center justify-center">
                 {selectedItem && (
                   <Dialog.Panel
                     as={motion.div}
-                    className="relative max-h-screen w-full rounded-3xl bg-white md:w-11/12 lg:w-9/12 xl:w-7/12"
+                    className="relative max-h-screen w-full rounded-3xl bg-black md:w-11/12 lg:w-9/12 xl:w-7/12"
                     layoutId={`card-container-${selectedItem.id}`}
                   >
                     <motion.img
@@ -72,7 +72,7 @@ const Work = () => {
                     />
                     <CardHeader
                       card={selectedItem}
-                      className="rounded-b-3xl bg-white"
+                      className="rounded-b-3xl bg-black"
                     />
                     <CardTech card={selectedItem} />
                     <motion.button
@@ -83,7 +83,7 @@ const Work = () => {
                     </motion.button>
                     <motion.div
                       className={cn(
-                        "prose max-w-none rounded-b-3xl bg-white px-6",
+                        "prose prose-invert max-w-none rounded-b-3xl bg-black px-6 ",
                         selectedItem.description && "pb-6",
                       )}
                     >
@@ -109,13 +109,13 @@ const CardHeader: React.FC<CardHeaderProps> = ({ className, card }) => {
   return (
     <motion.div
       layoutId={`card-header-${card.id}`}
-      className={cn("p-6", className)}
+      className={cn("px-6 pb-2 pt-6", className)}
     >
       <span className="font-bold">{card.year}</span>
       <span className="px-2 font-light text-neutral-600">/</span>
       <span className="font-light">{card.for}</span>
       <h1 className="py-2 text-3xl font-semibold">{card.title}</h1>
-      <h2 className="font-light text-neutral-600">{card.shortDescription}</h2>
+      <h2 className="font-light text-neutral-400">{card.shortDescription}</h2>
     </motion.div>
   );
 };

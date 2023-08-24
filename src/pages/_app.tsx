@@ -15,6 +15,10 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         html {
           font-family: ${inter.style.fontFamily};
         }
+        body {
+          background-color: #000;
+          color: #fff;
+        }
       `}</style>
       <Head>
         <title>Lukas Greičius</title>

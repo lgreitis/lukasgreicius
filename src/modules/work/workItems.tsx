@@ -28,7 +28,7 @@ export const workItems: CardItem[] = [
     for: "Personal website",
     image: "/lukas_greicius.png",
     shortDescription:
-      "This website was made using Next.js TailwindCSS and MDX. Click around these projects, some have more information. This website is still work in progress and more stuff will be added later.",
+      "This website was made using Next.js TailwindCSS, MDX and Three.js. This website is still work in progress and more stuff will be added later.",
     year: "2023",
     techIcons: [TechIcons.nextjs],
   },
