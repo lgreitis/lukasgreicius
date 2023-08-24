@@ -137,7 +137,7 @@ const HeroSymbol = () => {
 
   return (
     <Canvas style={{ width: "100%", flex: "1 1 100%" }}>
-      <Environment resolution={2048}>
+      <Environment resolution={1024}>
         <Lightformer
           intensity={lighformerIntensity}
           rotation-x={Math.PI / 2}
