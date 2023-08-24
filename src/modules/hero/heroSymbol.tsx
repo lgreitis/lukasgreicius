@@ -6,11 +6,7 @@ import {
   Text3D,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Bloom,
-  EffectComposer,
-  ToneMapping,
-} from "@react-three/postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useControls } from "leva";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -181,7 +177,7 @@ const HeroSymbol = () => {
           luminanceSmoothing={luminanceSmoothing}
           intensity={bloomIntensity}
         />
-        <ToneMapping middleGrey={middleGrey} maxLuminance={maxLuminance} />
+        {/* <ToneMapping middleGrey={middleGrey} maxLuminance={maxLuminance} /> */}
       </EffectComposer>
 
       <Symbol />
