@@ -16,7 +16,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           font-family: ${inter.style.fontFamily};
         }
         body {
-          background-color: #000;
+          background-color: #0b0b0b;
           color: #fff;
         }
       `}</style>

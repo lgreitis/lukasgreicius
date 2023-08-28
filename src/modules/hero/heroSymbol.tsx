@@ -40,6 +40,7 @@ const Symbol = () => {
       >
         {"</>"}
         <meshPhysicalMaterial roughness={0} metalness={0.9} reflectivity={2}>
+          {/* <meshPhysicalMaterial roughness={0.12} metalness={0.9} reflectivity={2}> */}
           <GradientTexture
             // colors={["#3172ff", "#fc3bc2"]}
             colors={["#08142e", "#5c1446"]}
@@ -117,7 +118,6 @@ const HeroSymbol = () => {
       <PresentationControls
         config={{ mass: 2, tension: 500, friction: 50 }}
         snap={{ mass: 1, tension: 200 }}
-        rotation={[0, 0.3, 0]}
         polar={[-Math.PI / 3, Math.PI / 3]}
         azimuth={[-Math.PI / 1.4, Math.PI / 2]}
       >
@@ -128,12 +128,3 @@ const HeroSymbol = () => {
 };
 
 export default HeroSymbol;
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      unrealBloomPass: any;
-      outputPass: any;
-    }
-  }
-}
