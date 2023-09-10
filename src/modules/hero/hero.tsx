@@ -13,7 +13,7 @@ const Hero = () => {
             Professional text file editor.
           </h2>
           <div className="flex justify-center gap-2 lg:-ml-1 lg:justify-normal">
-            <SocialButton href="https://www.linkedin.com/in/lukas-grei%C4%8Dius-609955217/">
+            <SocialButton href="https://www.linkedin.com/in/lukasgreicius/">
               <IconLinkedin className="h-8 w-8 fill-white" />
             </SocialButton>
             <SocialButton href="https://github.com/lgreitis/">
