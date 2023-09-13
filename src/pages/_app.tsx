@@ -33,6 +33,16 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           content="Personal page of Lukas Greičius"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          media="(prefers-color-scheme: light)"
+          href="/favicon.ico"
+        />
+        <link
+          rel="icon"
+          media="(prefers-color-scheme: dark)"
+          href="/favicon-white.ico"
+        />
       </Head>
       <Component {...pageProps} />
     </>
