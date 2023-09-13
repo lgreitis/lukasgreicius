@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 const description =
-  "Lukas Greičius: A seasoned software engineer and web developer dedicated to delivering cutting-edge solutions. Explore Lukas's portfolio, insights, and unwavering passion for technology-driven innovation";
+  "Lukas Greičius: A seasoned software engineer and web developer dedicated to delivering cutting-edge solutions. Explore Lukas's portfolio, insights, and unwavering passion for technology-driven innovation.";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
