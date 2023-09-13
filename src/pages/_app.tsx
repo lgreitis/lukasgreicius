@@ -8,6 +8,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const description =
+  "Lukas Greičius: A seasoned software engineer and web developer dedicated to delivering cutting-edge solutions. Explore Lukas's portfolio, insights, and unwavering passion for technology-driven innovation";
+
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
@@ -24,14 +27,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <title>Lukas Greičius</title>
         <meta property="og:title" content="Lukas Greičius" />
         <meta property="og:site_name" content="Lukas Greičius"></meta>
-        <meta
-          name="description"
-          content="Personal page of Lukas Greičius"
-        ></meta>
-        <meta
-          property="og:description"
-          content="Personal page of Lukas Greičius"
-        />
+        <meta name="description" content={description}></meta>
+        <meta property="og:description" content={description} />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
@@ -43,6 +40,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           media="(prefers-color-scheme: dark)"
           href="/favicon-white.ico"
         />
+        <meta charSet="UTF-8"></meta>
+        <meta name="theme-color" content="#0b0b0b"></meta>
       </Head>
       <Component {...pageProps} />
     </>
