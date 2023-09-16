@@ -3,6 +3,8 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
+import Button from "~/components/button/button";
+import { usePrevious } from "~/hooks/usePrevious";
 import { CardItem, TechIcons, workItems } from "~/modules/work/workItems";
 import { cn } from "~/utils/cn";
 
@@ -17,6 +19,14 @@ const getTechIconKey = (icon: string) => {
 
 const Work = () => {
   const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
+  // Fixing z indexes when card is being closed with usePrevious
+  const prevSelectedId = usePrevious(selectedItem?.id);
+  const [cardExpanded, setCardExpanded] = useState(false);
+
+  const closeModal = () => {
+    setSelectedItem(null);
+    setCardExpanded(false);
+  };
 
   return (
     <>
@@ -28,7 +38,10 @@ const Work = () => {
           <div className="grid h-full max-w-screen-xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {workItems.map((item) => (
               <motion.div
-                className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-black transition-colors hover:bg-neutral-900"
+                className={cn(
+                  "relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-black transition-colors hover:bg-neutral-900",
+                  prevSelectedId === item.id && "z-10",
+                )}
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
                 layoutId={`card-container-${item.id}`}
@@ -45,13 +58,11 @@ const Work = () => {
           </div>
         </div>
 
-        {/* If some genius is looking at this code, please explain why I need to set the key here, because if I don't the second time that the card is closed
-              the close animation starts to break. If this is fixed and the key is no longer needed the animation would be even better.  */}
-        <AnimatePresence key={selectedItem?.id ?? "none"}>
+        <AnimatePresence>
           <Dialog
             as="div"
             open={selectedItem !== null}
-            onClose={() => setSelectedItem(null)}
+            onClose={closeModal}
             className="relative z-20"
           >
             {/* TODO: figure out why Transition doesnt work */}
@@ -77,18 +88,31 @@ const Work = () => {
                     <CardTech card={selectedItem} />
                     <motion.button
                       className="absolute right-5 top-5 rounded-full bg-black bg-opacity-40 p-1 text-white"
-                      onClick={() => setSelectedItem(null)}
+                      onClick={closeModal}
                     >
                       <XMarkIcon className="w-5" />
                     </motion.button>
-                    <motion.div
-                      className={cn(
-                        "prose prose-invert max-w-none rounded-b-3xl bg-black px-6 ",
-                        selectedItem.description && "pb-6",
-                      )}
-                    >
-                      {selectedItem.description}
-                    </motion.div>
+                    {!cardExpanded && selectedItem.description && (
+                      <div className="flex items-center pb-4">
+                        <Button
+                          type="button"
+                          onClick={() => setCardExpanded(true)}
+                          className="mx-auto"
+                        >
+                          Read more
+                        </Button>
+                      </div>
+                    )}
+                    {cardExpanded && (
+                      <motion.div
+                        className={cn(
+                          "prose prose-invert max-w-none rounded-b-3xl bg-black px-6",
+                          selectedItem.description && "pb-6",
+                        )}
+                      >
+                        {selectedItem.description}
+                      </motion.div>
+                    )}
                   </Dialog.Panel>
                 )}
               </div>

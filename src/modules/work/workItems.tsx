@@ -38,7 +38,7 @@ export const workItems: CardItem[] = [
     for: "Work @ Viena sąskaita",
     image: "/viena_saskaita.png",
     shortDescription:
-      "Developing the whole frontend for Viena sąskaita. One year as a solo maintainer, now working with a team.",
+      "Maintaining and developing the website for Viena sąskaita. One year as a solo developer, now working with a team.",
     year: "2022 - now",
     techIcons: [TechIcons.react, TechIcons.symfony],
   },

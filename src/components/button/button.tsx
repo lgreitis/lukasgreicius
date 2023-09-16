@@ -1,17 +1,14 @@
-import clsx from "clsx";
-import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
+import { cn } from "~/utils/cn";
 
-interface Props {
-  href: string;
-  children?: React.ReactNode;
-}
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const SocialButton = (props: Props) => {
+const Button: React.FC<Props> = (props) => {
+  const { className, ...rest } = props;
   const [click, setClick] = useState(false);
 
   return (
-    <Link
+    <button
       onMouseDown={(e) => {
         e.button === 0 && setClick(true);
       }}
@@ -19,13 +16,14 @@ const SocialButton = (props: Props) => {
         e.button === 0 && setClick(false);
       }}
       onMouseUp={() => setClick(false)}
-      className={clsx(
+      className={cn(
         click && "!bg-neutral-500",
         "rounded-md p-1 transition-all hover:bg-neutral-700",
+        className,
       )}
-      {...props}
-    ></Link>
+      {...rest}
+    ></button>
   );
 };
 
-export default SocialButton;
+export default Button;
