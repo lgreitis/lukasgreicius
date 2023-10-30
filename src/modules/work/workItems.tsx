@@ -74,7 +74,7 @@ export const workItems: CardItem[] = [
     image: "/todo/todo_editor.png",
     shortDescription:
       "Simple rich text editor with folder system that supports live collaboration, teams and more.",
-    year: "2023",
+    year: "2022",
     techIcons: [TechIcons.react, TechIcons.nodejs, TechIcons.postgresql],
     images: [
       "/todo/todo_landing.png",
