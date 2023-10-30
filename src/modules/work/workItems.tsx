@@ -9,6 +9,7 @@ export interface CardItem {
   year: string;
   techIcons: TechIcons[];
   description?: JSX.Element;
+  images?: string[];
 }
 
 export enum TechIcons {
@@ -46,7 +47,7 @@ export const workItems: CardItem[] = [
     id: "plutus",
     title: "Plutus",
     for: "Bachelor thesis",
-    image: "/plutus_banner.png",
+    image: "/plutus/plutus_banner.png",
     shortDescription:
       "Tool for CS:GO players and investors that has comprehensive CS:GO item statistics, portfolio valuations, and interactive graphs.",
     year: "2023",
@@ -57,16 +58,32 @@ export const workItems: CardItem[] = [
       TechIcons.redis,
     ],
     description: <Plutus />,
+    images: [
+      "/plutus/plutus_landing.png",
+      "/plutus/plutus_dash.png",
+      "/plutus/plutus_inventory.png",
+      "/plutus/plutus_item.png",
+      "/plutus/plutus_discord.png",
+      "/plutus/plutus_email.png",
+    ],
   },
   {
     id: "todo",
     title: "TODO:",
     for: "University module",
-    image: "/todo.png",
+    image: "/todo/todo_editor.png",
     shortDescription:
       "Simple rich text editor with folder system that supports live collaboration, teams and more.",
     year: "2023",
     techIcons: [TechIcons.react, TechIcons.nodejs, TechIcons.postgresql],
+    images: [
+      "/todo/todo_landing.png",
+      "/todo/todo_login.png",
+      "/todo/todo_register.png",
+      "/todo/todo_invite.png",
+      "/todo/todo_org_invites.png",
+      "/todo/todo_landing.png",
+    ],
   },
   {
     id: "trakiecio_kortele",

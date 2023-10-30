@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Drawer } from "vaul";
+import SimpleCarousel from "~/components/simpleCarousel/simpleCarousel";
 import CardHeaderItems from "~/modules/work/components/CardHeader";
 import CardTech from "~/modules/work/components/CardTech";
 import { CardItem, workItems } from "~/modules/work/workItems";
@@ -28,10 +29,18 @@ const WorkMobile = () => {
           <Drawer.Portal>
             <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex max-h-[96%] flex-col rounded-t-3xl bg-black outline-none">
               <div className="relative">
-                <img
-                  className="z-10 w-full rounded-t-3xl object-cover"
-                  src={selectedItem.image}
-                />
+                <SimpleCarousel>
+                  <img
+                    className="w-full rounded-t-3xl object-cover"
+                    src={selectedItem.image}
+                  />
+                  {selectedItem.images?.map((image) => (
+                    <img
+                      className="w-full rounded-t-3xl object-cover"
+                      src={image}
+                    />
+                  ))}
+                </SimpleCarousel>
                 <div className="absolute left-0 top-0 h-full w-full"></div>
               </div>
               <div className="overflow-auto">

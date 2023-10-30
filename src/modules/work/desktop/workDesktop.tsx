@@ -3,6 +3,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import Button from "~/components/button/button";
+import SimpleCarousel from "~/components/simpleCarousel/simpleCarousel";
 import { usePrevious } from "~/hooks/usePrevious";
 import CardHeader from "~/modules/work/components/CardHeader";
 import CardTech from "~/modules/work/components/CardTech";
@@ -60,11 +61,19 @@ const WorkDesktop = () => {
                   className="relative max-h-screen w-full rounded-3xl bg-black md:w-11/12 lg:w-9/12 xl:w-7/12"
                   layoutId={`card-container-${selectedItem.id}`}
                 >
-                  <motion.img
-                    layoutId={`card-image-${selectedItem.id}`}
-                    className="w-full rounded-t-3xl object-cover"
-                    src={selectedItem.image}
-                  />
+                  <SimpleCarousel>
+                    <motion.img
+                      layoutId={`card-image-${selectedItem.id}`}
+                      className="w-full rounded-t-3xl object-cover"
+                      src={selectedItem.image}
+                    />
+                    {selectedItem.images?.map((image) => (
+                      <img
+                        className="w-full rounded-t-3xl object-cover"
+                        src={image}
+                      />
+                    ))}
+                  </SimpleCarousel>
                   <CardHeader
                     card={selectedItem}
                     className="rounded-b-3xl bg-black"
