@@ -37,8 +37,8 @@ const WorkDesktop = () => {
             className="w-full object-cover"
             src={item.image}
           />
-          <CardHeader card={item} />
-          <CardTech card={item} />
+          <CardHeader card={item} animate />
+          <CardTech card={item} animate />
         </motion.div>
       ))}
 
@@ -68,8 +68,9 @@ const WorkDesktop = () => {
                   <CardHeader
                     card={selectedItem}
                     className="rounded-b-3xl bg-black"
+                    animate
                   />
-                  <CardTech card={selectedItem} />
+                  <CardTech card={selectedItem} animate />
                   <motion.button
                     className="absolute right-5 top-5 rounded-full bg-black bg-opacity-40 p-1 text-white"
                     onClick={closeModal}

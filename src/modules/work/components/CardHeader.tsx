@@ -15,7 +15,6 @@ const CardHeader: React.FC<CardHeaderProps> = ({
 }) => {
   return (
     <motion.div
-      animate={animate}
       layoutId={animate ? `card-header-${card.id}` : undefined}
       className={cn("px-6 pb-2 pt-6", className)}
     >

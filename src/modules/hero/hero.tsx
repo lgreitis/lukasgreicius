@@ -7,6 +7,7 @@ const DynamicHeroSymbol = dynamic(() => import("~/modules/hero/heroSymbol"), {
   loading: () => (
     <Image src="/hero_placeholder.png" alt="Logo" width={600} height={600} />
   ),
+  ssr: false,
 });
 
 const Hero = () => {

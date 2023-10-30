@@ -23,7 +23,6 @@ const CardTech: React.FC<CardTechProps> = ({ className, card, animate }) => {
     <div className={cn("flex h-full items-end gap-2 px-6 pb-6", className)}>
       {card.techIcons.map((icon) => (
         <motion.div
-          animate={animate}
           key={icon}
           layoutId={animate ? `card-tech-${card.id}-${icon}` : undefined}
         >

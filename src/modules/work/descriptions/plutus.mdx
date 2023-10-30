@@ -15,10 +15,7 @@ This deploment diagram should give some idea of what's going on
 ## Next.js website
 
 The website was nothing special it used the [t3 stack](https://create.t3.gg/) which is a great bolerplate for fullstack applications.
-The only problem was the Prisma ORM which is **SLOOOW**. The Ubuntu server which can be seen in the diagram was hosted on my old laptop on WIFI
-and that created huge bottlenecks in my website. The bottlenecks were so bad that I had to cache some responses on [Upstash](https://upstash.com/).
-Prisma was the problem because it created some really bad queries that really bogged down my old quadcore cpu. I could have written my own queries,
-but it was too late for this project. I might rewrite this project in the future and use something like [Drizzle](https://orm.drizzle.team/), which looks very cool.
+I really liked this stack, but the only problem was the Prisma ORM which was very slow.
 
 ## Node.js workers
 
@@ -35,5 +32,3 @@ I have made 5 workers for this project:
 - Inventory worker
 
 And one "worker" that was just a Discord bot.
-
-This description is still in the making. I will fill in some more information and some screenshots later.
