@@ -12,7 +12,7 @@ const DynamicHeroSymbol = dynamic(() => import("~/modules/hero/heroSymbol"), {
 
 const Hero = () => {
   return (
-    <div className="flex items-center justify-center py-64">
+    <div className="flex items-center justify-center py-32">
       <div className="flex h-full w-full max-w-7xl flex-col-reverse items-center justify-end text-center lg:flex-row lg:justify-center lg:text-start">
         <div className="flex  max-w-3xl flex-col gap-3 tracking-tighter text-white lg:whitespace-nowrap">
           <h1 className="text-7xl">Lukas Greičius</h1>

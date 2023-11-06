@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import React, { useState } from "react";
 import Button from "~/components/button/button";
 import SimpleCarousel from "~/components/simpleCarousel/simpleCarousel";
@@ -68,9 +69,14 @@ const WorkDesktop = () => {
                       src={selectedItem.image}
                     />
                     {selectedItem.images?.map((image) => (
-                      <img
+                      <Image
+                        key={image}
                         className="w-full rounded-t-3xl object-cover"
+                        placeholder="empty"
+                        alt=""
                         src={image}
+                        width={1920}
+                        height={1080}
                       />
                     ))}
                   </SimpleCarousel>
