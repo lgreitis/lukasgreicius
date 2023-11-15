@@ -77,12 +77,12 @@ export const workItems: CardItem[] = [
     year: "2022",
     techIcons: [TechIcons.react, TechIcons.nodejs, TechIcons.postgresql],
     images: [
+      "/todo/todo_dash.png",
       "/todo/todo_landing.png",
       "/todo/todo_login.png",
       "/todo/todo_register.png",
       "/todo/todo_invite.png",
       "/todo/todo_org_invites.png",
-      "/todo/todo_landing.png",
     ],
   },
   {
