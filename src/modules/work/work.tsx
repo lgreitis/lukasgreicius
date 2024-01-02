@@ -8,7 +8,7 @@ const Work = () => {
     <React.Fragment>
       <div>
         <div className="flex justify-center px-6 pb-6">
-          <div className="grid h-full max-w-screen-xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid h-full max-w-screen-xl grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             <MobileOnlyView>
               <WorkMobile />
             </MobileOnlyView>
