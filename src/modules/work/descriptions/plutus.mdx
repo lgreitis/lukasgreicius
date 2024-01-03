@@ -25,10 +25,15 @@ Combined with [PM2 process manager](https://pm2.keymetrics.io/) I had a weird, b
 
 I have made 5 workers for this project:
 
-- Api price worker
-- Exchange price worker
-- Mail worker
-- Official price worker
-- Inventory worker
+- Api price worker - Gets price from [SteamApis](https://steamapis.com/), from where I get additional information about an item. I aim to replace this service with my own logic. This is ran daily.
+- Exchange price worker - Gets currency exchange info so I can support lots of different currencies. Ran daily to get the latest exchange rate.
+- Mail worker - Sends monthly emails about user's portfolio.
+- Official price worker - Scrapes the data from Steam website to get various information about an item. This is ran continiously with every item in CS:GO.
+- Inventory worker - Scrapes user's inventory to get all of user's owned items. This is ran when user requests inventory refresh.
 
 And one "worker" that was just a Discord bot.
+
+The coolest part of my project is that all of the ~120,000 items finish updating in around 6 hours, which is pretty fast, considering Steam's rate limiting and the fact that I'm not using any paid proxy services.
+Additionally, this was accomplished on an old laptop with 4 threads and a Wi-Fi connection, to minimize costs.
+
+## As of December 2023, I have begun the process of remaking this project, aiming to add further features, improve performance and ultimately release it to the public.
