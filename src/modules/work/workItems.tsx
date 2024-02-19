@@ -20,6 +20,9 @@ export enum TechIcons {
   postgresql = "/small_icons/postgresql.png",
   symfony = "/small_icons/symfony.png",
   firebase = "/small_icons/firebase.png",
+  mongodb = "/small_icons/mongodb.svg",
+  csharp = "/small_icons/csharp.png",
+  xamarin = "/small_icons/xamarin.png",
 }
 
 export const workItems: CardItem[] = [
@@ -99,5 +102,30 @@ export const workItems: CardItem[] = [
       TechIcons.firebase,
       TechIcons.redis,
     ],
+  },
+  {
+    id: "meta_tune",
+    title: "meta.tune",
+    for: "University module",
+    image: "/meta.tune.png",
+    shortDescription:
+      "Similar to plug.dj, this app is for music lovers who want to share their music taste with others in rooms where you can queue music, vote for songs, and more.",
+    year: "2021",
+    techIcons: [
+      TechIcons.react,
+      TechIcons.nodejs,
+      TechIcons.mongodb,
+      TechIcons.redis,
+    ],
+  },
+  {
+    id: "brief_for_reddit",
+    title: "Brief for Reddit",
+    for: "Personal app",
+    image: "/brief_for_reddit.png",
+    shortDescription:
+      "Brief for Reddit is a simple app that allows you to read Reddit posts on Galaxy Watch 3.",
+    year: "2021",
+    techIcons: [TechIcons.csharp, TechIcons.xamarin],
   },
 ];

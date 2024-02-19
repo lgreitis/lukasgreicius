@@ -21,7 +21,7 @@ interface SkillProps {
 
 const Skill: React.FC<SkillProps> = ({ name }) => {
   return (
-    <div className="flex-grow basis-1/6 rounded-xl border border-neutral-800 bg-black px-6 py-3 text-center">
+    <div className="flex-grow basis-1/6 select-none rounded-xl border border-neutral-800 bg-black px-6 py-3 text-center">
       {name}
     </div>
   );
