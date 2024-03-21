@@ -109,7 +109,7 @@ export const workItems: CardItem[] = [
     for: "University module",
     image: "/meta.tune.png",
     shortDescription:
-      "Similar to plug.dj, this app is for music lovers who want to share their music taste with others in rooms where you can queue music, vote for songs, and more.",
+      "Shared music experience, similar to plug.dj, where users can queue music, vote for songs, chat, and more.",
     year: "2021",
     techIcons: [
       TechIcons.react,
