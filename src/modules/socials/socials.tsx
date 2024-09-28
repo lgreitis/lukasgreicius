@@ -1,6 +1,6 @@
+import { twMerge } from "tailwind-merge";
 import SocialButton from "~/components/button/socialButton";
 import { IconGithub, IconLinkedin } from "~/components/icons";
-import { cn } from "~/utils/cn";
 
 interface SocialsProps {
   clasName?: string;
@@ -9,7 +9,10 @@ interface SocialsProps {
 const Socials: React.FC<SocialsProps> = ({ clasName }) => {
   return (
     <div
-      className={cn(clasName, "flex justify-center gap-2 lg:justify-normal")}
+      className={twMerge(
+        clasName,
+        "flex justify-center gap-2 lg:justify-normal",
+      )}
     >
       <SocialButton href="https://www.linkedin.com/in/lukasgreicius/">
         <IconLinkedin className="h-8 w-8" />

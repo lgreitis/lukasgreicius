@@ -34,7 +34,7 @@ const Skills = () => {
         <h3 className="text-3xl font-semibold">Skills</h3>
         <div className="flex flex-wrap justify-center gap-2">
           {skills.map((skill) => (
-            <Skill name={skill} />
+            <Skill key={skill} name={skill} />
           ))}
         </div>
       </div>

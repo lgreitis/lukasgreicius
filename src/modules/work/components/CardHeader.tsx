@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { CardItem } from "~/modules/work/workItems";
-import { cn } from "~/utils/cn";
+import { twMerge } from "tailwind-merge";
+import { type CardItem } from "~/modules/work/workItems";
 
 interface CardHeaderProps {
   className?: string;
@@ -16,7 +16,7 @@ const CardHeader: React.FC<CardHeaderProps> = ({
   return (
     <motion.div
       layoutId={animate ? `card-header-${card.id}` : undefined}
-      className={cn("px-6 pb-2 pt-6", className)}
+      className={twMerge("px-6 pb-2 pt-6", className)}
     >
       <span className="font-bold">{card.year}</span>
       <span className="px-2 font-light text-neutral-600">/</span>

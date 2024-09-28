@@ -11,7 +11,7 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useControls } from "leva";
 import { useRef } from "react";
 import * as THREE from "three";
-import { Group } from "three";
+import { type Group } from "three";
 
 const Symbol = () => {
   const symbolRef = useRef<Group>(null!);
@@ -63,11 +63,6 @@ const HeroSymbol = () => {
       luminanceThreshold: { value: 0.17, min: 0, max: 1 },
     });
 
-  const { middleGrey, maxLuminance } = useControls({
-    middleGrey: { value: 0.6, min: 0, max: 1, step: 0.1 },
-    maxLuminance: { value: 6, min: 0, max: 6, step: 0.5 },
-  });
-
   const lighformerIntensity = 10;
 
   return (
@@ -112,7 +107,6 @@ const HeroSymbol = () => {
           intensity={bloomIntensity}
           // mipmapBlur
         />
-        {/* <ToneMapping middleGrey={middleGrey} maxLuminance={maxLuminance} /> */}
       </EffectComposer>
 
       <PresentationControls

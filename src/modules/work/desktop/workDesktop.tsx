@@ -3,13 +3,13 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
+import { twMerge } from "tailwind-merge";
 import Button from "~/components/button/button";
 import SimpleCarousel from "~/components/simpleCarousel/simpleCarousel";
 import { usePrevious } from "~/hooks/usePrevious";
 import CardHeader from "~/modules/work/components/CardHeader";
 import CardTech from "~/modules/work/components/CardTech";
-import { CardItem, workItems } from "~/modules/work/workItems";
-import { cn } from "~/utils/cn";
+import { type CardItem, workItems } from "~/modules/work/workItems";
 
 const WorkDesktop = () => {
   const [selectedItem, setSelectedItem] = useState<CardItem | null>(null);
@@ -26,7 +26,7 @@ const WorkDesktop = () => {
     <React.Fragment>
       {workItems.map((item) => (
         <motion.div
-          className={cn(
+          className={twMerge(
             "relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-black transition-colors hover:bg-neutral-900",
             prevSelectedId === item.id && "z-10",
           )}
@@ -105,7 +105,7 @@ const WorkDesktop = () => {
                   )}
                   {cardExpanded && (
                     <motion.div
-                      className={cn(
+                      className={twMerge(
                         "prose prose-invert max-w-none rounded-b-3xl bg-black px-6",
                         selectedItem.description && "pb-6",
                       )}

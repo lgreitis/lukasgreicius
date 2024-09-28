@@ -1,9 +1,7 @@
 {
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-    "source.fixAll": true
-  },
-  "svg.preview.background": "custom"
+    "source.fixAll": "explicit"
+  }
 }

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CardItem, TechIcons } from "~/modules/work/workItems";
-import { cn } from "~/utils/cn";
+import { twMerge } from "tailwind-merge";
+import { type CardItem, TechIcons } from "~/modules/work/workItems";
 
 const getTechIconKey = (icon: string) => {
   const indexOfS = Object.values(TechIcons).indexOf(
@@ -20,7 +20,9 @@ interface CardTechProps {
 
 const CardTech: React.FC<CardTechProps> = ({ className, card, animate }) => {
   return (
-    <div className={cn("flex h-full items-end gap-2 px-6 pb-6", className)}>
+    <div
+      className={twMerge("flex h-full items-end gap-2 px-6 pb-6", className)}
+    >
       {card.techIcons.map((icon) => (
         <motion.div
           key={icon}

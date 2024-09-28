@@ -1,4 +1,4 @@
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { type AppType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
