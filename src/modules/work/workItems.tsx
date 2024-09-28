@@ -23,9 +23,22 @@ export enum TechIcons {
   mongodb = "/small_icons/mongodb.svg",
   csharp = "/small_icons/csharp.png",
   xamarin = "/small_icons/xamarin.png",
+  electron = "/small_icons/electron.png",
+  tailwindcss = "/small_icons/tailwindcss.svg",
 }
 
 export const workItems: CardItem[] = [
+  {
+    id: "kawa",
+    title: "Kawa",
+    for: "Personal app",
+    image: "/kawa/kawa_main.png",
+    shortDescription:
+      "Stream anime through torrents on a Mac/Linux/Windows app. Powered by Electron and WebTorrent. Planning for AndroidTV and mobile.",
+    year: "2024",
+    techIcons: [TechIcons.react, TechIcons.tailwindcss, TechIcons.electron],
+    images: ["/kawa/kawa_anime.png"],
+  },
   {
     id: "lukasgreicius",
     title: "Lukas Greičius",
@@ -34,7 +47,7 @@ export const workItems: CardItem[] = [
     shortDescription:
       "This website was made using Next.js TailwindCSS, MDX and Three.js.",
     year: "2023",
-    techIcons: [TechIcons.nextjs],
+    techIcons: [TechIcons.nextjs, TechIcons.tailwindcss],
   },
   {
     id: "viena_saskaita",
@@ -44,7 +57,7 @@ export const workItems: CardItem[] = [
     shortDescription:
       "Maintaining and developing the website for Viena sąskaita. One year as a solo developer, now working with a team.",
     year: "2022 - now",
-    techIcons: [TechIcons.react, TechIcons.symfony],
+    techIcons: [TechIcons.react, TechIcons.symfony, TechIcons.tailwindcss],
   },
   {
     id: "plutus",
@@ -57,6 +70,7 @@ export const workItems: CardItem[] = [
     techIcons: [
       TechIcons.nextjs,
       TechIcons.nodejs,
+      TechIcons.tailwindcss,
       TechIcons.postgresql,
       TechIcons.redis,
     ],
