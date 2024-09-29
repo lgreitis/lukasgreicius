@@ -72,7 +72,6 @@ const WorkDesktop = () => {
                       <Image
                         key={image}
                         className="w-full rounded-t-3xl object-cover"
-                        placeholder="blur"
                         alt={selectedItem.title}
                         src={image}
                         width={1920}
